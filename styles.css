@@ -9,9 +9,7 @@ header {
     background-color: transparent; /* Průhledné pozadí */
     color: rgba(255, 255, 255, 0);
     text-align: center;
-    padding: 1em;
     position: fixed;
-    width: 100%;
     display: flex;
 }
 main {
@@ -50,7 +48,6 @@ footer {
 header {
     /* existing styles */
     position: fixed;
-    width: 100%;
     display: flex;
     justify-content: space-between; /* Align title and toggle button */
     
@@ -85,14 +82,13 @@ header {
     padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 5px;
 }
 #searchButton:hover {
     background-color: #45a049;
 }
                     /*                                                                                  Recepie holder1                                                                        */
 .square-button1 {
-    text-align: block;
+    text-align: block;  
     margin-top: 430px;
     margin-left: 200px;
 
@@ -187,52 +183,118 @@ header {
     background-color: #cfffd1;
 }
 
-/* Apply the common style to each recipe holder */
-.square-button1 {
-    margin-top: 310px;
-    margin-left: 200px;
+
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust the height as needed */
 }
 
-.square-button2 {
-    margin-top: -453px;
-    margin-left: 600px;
-}
 
-.square-button3 {
-    margin-top: -454px;
-    margin-left: 1000px;
-}
+.wrapper {
+    margin-left: 3.5%; /* Adjust the left margin to offset the grid horizontally */
+    margin-top: 40%; /* Adjust the top margin to offset the grid vertically */
+    display: grid;
+    grid-template-columns: repeat(4, 350px);
+    grid-template-rows: repeat(3, 500px); /* Auto height to fit content */
+    gap: 25px; /* Adjust the gap between items as needed */
+    min-height: 1018px; /* Adjust the minimum height as needed */
 
-.square-button4 {
-    margin-top: -455px;
-    margin-left: 1400px;
-}
-.square-button5 {
-    margin-top: 85px;
-    margin-left: 200px;
-}
-.square-button6 {
-    margin-top: -455px;
-    margin-left: 600px;
-}
-.square-button7 {
-    margin-top: -455px;
-    margin-left: 1000px;
-}
-.square-button8 {
-    margin-top: -455px;
-    margin-left: 1400px;
-}
+  
+  }
+
+  .square-button1 {
+    margin-top: 0;
+    margin-left: 0;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .square-button2 {
+    margin-top: 0;
+    margin-left: 0;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .square-button3 {
+    margin-top: 0;
+    margin-left: 0;
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .square-button4 {
+    margin-top: 0;
+    margin-left: 0;
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  .square-button5 {
+    margin-top: 0;
+    margin-left: 0;
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .square-button6 {
+    margin-top: 0;
+    margin-left: 0;
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .square-button7 {
+    margin-top: 0;
+    margin-left: 0;
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .square-button8 {
+    margin-top: 0;
+    margin-left: 0;
+    grid-column: 4;
+    grid-row: 2;
+  }
+
 
             /*                                                                                                            Menu                                                */
 #toggleButton {
+    display: block;
+    position: fixed;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    border: 2px solid #585858;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 22px;
+    padding-right: 22px;
+    z-index: 11;
+    top: 60px;
+    right: 18px;
+
     width: 30px; /* Adjust the width of the button as needed */
     height: 30px; /* Adjust the height of the button as needed */
     cursor: pointer;
     margin-right: 10px; /* Add margin to separate from the title */
 }
+
+.toggleButton img {
+    width: 100px;  /* Make the image fill the button */
+    height: 100px; /* Make the image fill the button */
+}
+
 #difficultyBtn              /*                                                                                         Difficulty          */
 {   font-family: 'Arial', sans-serif;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 13px;
+    padding-right: 13px;
     display: none;
     font-size: small;
     position: fixed;
@@ -241,11 +303,11 @@ header {
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     border: 5px solid #585858;
-    padding: 3px;
     z-index: 1;
-    top: 160px;
-    right: 35px;
+    top: 206px;
+    right: 23px;
 }
+
 .difficulty-options {
     display: none;
     position: fixed;
@@ -253,37 +315,62 @@ header {
     background-color: white;
     border-radius: 10px;
     border: 5px solid #585858;
-    padding: 3px;
-    z-index: 3;
-    top: 195px;
-    right: 35px;
+    padding-left: 8.5px;
+    padding-right: 8.5px;
+    padding-top: 10px;  
+    padding-bottom: 10px;
+
+    z-index: 5;
+    top: 400px;
+    right: 17px;
 }
 .difficulty-options label {
     display: block;
     text-align: center;
     line-height: 20px; /* Align text vertically in the center */
-    font-size: 12px; /* Adjust font size as needed */
+    font-size: 13px; /* Adjust font size as needed */
     margin-bottom: 3px; /* Add some margin to separate labels */
     border-radius: 10px;
-    padding: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;  
+    padding-bottom: 3px;
+
     border: 2px solid #66bb6a;
     z-index: 2;
 
+}       
+#easy
+{
+    background-color: #00ff0d36;
 }
+#medium
+{
+    background-color: rgba(255, 166, 0, 0.274);
+}
+#hard
+{
+    background-color: #ff000036;
+}
+
+
 #priceBtn              /*                                                                                                 PRICE                                                                */
 {   font-family: 'Arial', sans-serif;
     display: none;
-    font-size: small;
+    font-size: 14px;
     position: fixed;
+    padding-top: 7px;   
+    padding-bottom: 7px;
+    padding-left: 21.5px;
+    padding-right: 21.5px;
     color:rgb(0, 0, 0);
     align-items: center;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     border: 5px solid #585858;
-    padding: 3px;
     z-index: 1;
-    top: 195px;
-    right: 44px;
+    top: 295px;
+    right: 23px;
 }
 .price-options {
     display: none;
@@ -292,10 +379,13 @@ header {
     background-color: white;
     border-radius: 10px;
     border: 5px solid #585858;
-    padding: 3px;
-    z-index: 2;
-    top: 230px;
-    right: 27px;
+    padding-top: 7px;   
+    padding-bottom: 7px;
+    padding-left: 12.5px;
+    padding-right: 12.5px;
+    z-index: 10;
+    top: 400px;
+    right: 18px;
 }
 .price-options label {
     display: block;
@@ -322,10 +412,10 @@ header {
     right: 22px;
     top: 110px;
     z-index: 1;
-
-
-
 }
+
+
+
 .tolerance-options {
     display: none;
     position: fixed;
@@ -335,7 +425,7 @@ header {
     border: 5px solid #585858;
     padding: 3px;
     z-index: 4;
-    top: 160px;
+    top: 400px;
     right: 17px;
 }
 .tolerance-options label {
@@ -348,23 +438,96 @@ header {
     border-radius: 10px;
     padding: 1px;
     z-index: 2;
-
+    top: 80px;
+    right: 17px;
 }
-.toggleButton {                         /*                                                                                 MENU                                                 */
-
-    display: block;
+#dishBtn {                                    /*                                                                   Dish                                         */
+    display: none;
+    background-color: #ffffff;
+    border-radius: 10px;   
+    color: rgb(0, 0, 0);
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border: 5px solid #585858;
+    cursor: pointer;
     position: fixed;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0);
-    border-radius: 10px;
-    border: 2px solid #585858;
-    padding: 3px;
+    right: 23px;
+    top: 252px;
     z-index: 1;
-    top: 50px;
-    right: 17px;
-    z-index: 5;
-
 }
+.dish-options {
+    display: none;
+    position: fixed;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    border: 5px solid #585858;
+    padding-top: 7px;   
+    padding-bottom: 7px;
+    padding-left: 5.5px;
+    padding-right: 5.5px;
+    z-index: 4;
+    top: 400px;
+    right: 17px;
+}
+.dish-options label {
+    display: block;
+    text-align: center;
+    line-height: 20px; /* Align text vertically in the center */
+    font-size: 12px; /* Adjust font size as needed */
+    margin-bottom: 3px; /* Add some margin to separate labels */
+    border: 3px solid #66bb6a;
+    border-radius: 10px;
+    padding: 1px;
+    z-index: 2;
+}
+
+#categoryBtn {                                    /*                                                                   category                                         */
+    display: none;
+    background-color: #ffffff;
+    border-radius: 10px;   
+    color: rgb(0, 0, 0);
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 11px;
+    padding-right: 11px;
+    border: 5px solid #585858;
+    cursor: pointer;
+    position: fixed;
+    align-items: center;
+    right: 22px;
+    top: 160px;
+    z-index: 1;
+}
+.category-options {
+    display: none;
+    position: fixed;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    border: 5px solid #585858;
+    padding: 3px;
+    z-index: 4;
+    top: 400px;
+    right: 19px;
+}
+.category-options label {
+    display: block;
+    text-align: center;
+    line-height: 20px; /* Align text vertically in the center */
+    font-size: 14px; /* Adjust font size as needed */
+    margin-bottom: 3px; /* Add some margin to separate labels */
+    border: 3px solid #66bb6a;
+    border-radius: 10px;
+    padding: 1px;
+    z-index: 2;
+}
+
+
+
 .recipe-filter {
     display: flex;
     justify-content: space-between;
@@ -379,6 +542,12 @@ header {
     display: none; /* Hide the checkboxes */
 }
 .difficulty-options input[type="checkbox"] {
+    display: none; /* Hide the checkboxes */
+}
+.dish-options input[type="checkbox"] {
+    display: none; /* Hide the checkboxes */
+}
+.category-options input[type="checkbox"] {
     display: none; /* Hide the checkboxes */
 }
 

@@ -4,8 +4,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkboxes = document.querySelectorAll('.tolerance-options input[type="checkbox"]');
     
 
-    toleranceBtn.addEventListener("click", function () {                                                        //      Tolerance Toggle       
+    toleranceBtn.addEventListener("click", function () {                                                  
+        categoryOptions.style.display = 'none'
+        difficultyOptions.style.display = 'none'
+        dishOptions.style.display = 'none'
+        priceOptions.style.display = 'none'
+        
+        categoryBtn.style.backgroundColor = 'white'; 
+        difficultyBtn.style.backgroundColor = 'white';
+        dishBtn.style.backgroundColor = 'white';
+        priceBtn.style.backgroundColor = 'white';
+        //                                                                                                            Tolerance Toggle       
         toleranceOptions.style.display = (toleranceOptions.style.display === "none") ? "block" : "none";
+        toleranceBtn.style.backgroundColor = (toleranceOptions.style.display === "none") ? "white" : "#cffcd1";
+
     });
 
     checkboxes.forEach(function (checkbox) {        //                                                                  Tolerance border 
@@ -30,12 +42,24 @@ document.addEventListener("DOMContentLoaded", function () { //                  
 
     // Add a click event listener to the button
     priceBtn.addEventListener("click", function () {
+        //          hides others
+        toleranceOptions.style.display = 'none'
+        categoryOptions.style.display = 'none'
+        difficultyOptions.style.display = 'none'
+        dishOptions.style.display = 'none'
+        //          revers others color
+        toleranceBtn.style.backgroundColor = 'white'; 
+        categoryBtn.style.backgroundColor = 'white'; 
+        difficultyBtn.style.backgroundColor = 'white';
+        dishBtn.style.backgroundColor = 'white';
         // Toggle the display property of the price options
         if (priceOptions.style.display === "none" || priceOptions.style.display === "") {
             priceOptions.style.display = "block";
         } else {
             priceOptions.style.display = "none";
         }
+        priceBtn.style.backgroundColor = (priceOptions.style.display === "none") ? "white" : "#cffcd1";
+
     });
 });
 
@@ -56,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () { //                  
         });
     });
 
-                                                            //                                                              Difficulty toggle 
+                                                            //                                                              Difficulty  
     function toggleBorderColor() {          
         document.querySelectorAll('.difficulty-options input[type="checkbox"]').forEach(function (checkbox) {
             checkbox.parentNode.style.borderColor = checkbox.checked ? "transparent" : "#66bb6a";
@@ -74,11 +98,99 @@ document.addEventListener("DOMContentLoaded", function () {
     var difficultyOptions = document.getElementById("difficultyOptions");
 
     difficultyBtn.addEventListener("click", function () {
+        toleranceOptions.style.display = 'none'
+        categoryOptions.style.display = 'none'
+        dishOptions.style.display = 'none'
+        priceOptions.style.display = 'none'
+
+        toleranceBtn.style.backgroundColor = 'white'; 
+        categoryBtn.style.backgroundColor = 'white'; 
+        dishBtn.style.backgroundColor = 'white';
+        priceBtn.style.backgroundColor = 'white';
+
         difficultyOptions.style.display = (difficultyOptions.style.display === "none" || difficultyOptions.style.display === "") ? "block" : "none";
+        difficultyBtn.style.backgroundColor = (difficultyOptions.style.display === "none") ? "white" : "#cffcd1";
+
     });
 
 
-                            //                                                                                              Difficulty border
+
+
+
+                    //                                                                                                            Dish button
+// Assuming dishBtn is your button element
+var dishBtn = document.getElementById("dishBtn");
+
+dishBtn.addEventListener("click", function () {
+    toleranceOptions.style.display = 'none'
+    categoryOptions.style.display = 'none'
+    difficultyOptions.style.display = 'none'
+    priceOptions.style.display = 'none'
+
+    toleranceBtn.style.backgroundColor = 'white'; 
+    categoryBtn.style.backgroundColor = 'white'; 
+    difficultyBtn.style.backgroundColor = 'white';
+    priceBtn.style.backgroundColor = 'white';
+
+    var dishOptions = document.getElementById("dishOptions");
+    dishOptions.style.display = (dishOptions.style.display === "none") ? "block" : "none";
+    dishBtn.style.backgroundColor = (dishOptions.style.display === "none") ? "white" : "#cffcd1";
+});
+
+
+    // Dish border
+    function toggleDishBorderColor() {
+        document.querySelectorAll('.dish-options input[type="checkbox"]').forEach(function (checkbox) {
+            checkbox.parentNode.style.borderColor = checkbox.checked ? "transparent" : "#66bb6a";
+            checkbox.parentNode.style.color = "black";
+        });
+    }
+
+    document.querySelectorAll('.dish-options input[type="checkbox"]').forEach(function (checkbox) {
+        checkbox.addEventListener("change", toggleDishBorderColor);
+    });
+
+
+    //                                                                                                                          Category button
+const categoryBtn = document.getElementById("categoryBtn");
+const categoryOptions = document.getElementById("categoryOptions");
+
+categoryBtn.addEventListener("click", function () {
+    toleranceOptions.style.display = 'none'
+    difficultyOptions.style.display = 'none'
+    dishOptions.style.display = 'none'
+    priceOptions.style.display = 'none'
+
+    toleranceBtn.style.backgroundColor = 'white'; 
+    difficultyBtn.style.backgroundColor = 'white';
+    dishBtn.style.backgroundColor = 'white';
+    priceBtn.style.backgroundColor = 'white';
+
+    categoryOptions.style.display = (categoryOptions.style.display === "none") ? "block" : "none";
+    categoryBtn.style.backgroundColor = (categoryOptions.style.display === "none") ? "white" : "#cffcd1";
+
+});
+
+function toggleBorderColor() {
+    document.querySelectorAll('.category-options input[type="checkbox"]').forEach(function (checkbox) {
+        checkbox.parentNode.style.borderColor = checkbox.checked ? "transparent" : "#66bb6a";
+        checkbox.parentNode.style.color = "black";
+    });
+}
+
+document.querySelectorAll('.category-options input[type="checkbox"]').forEach(function (checkbox) {
+    checkbox.addEventListener("change", toggleBorderColor);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    var categoryBtn = document.getElementById("categoryBtn");
+    var categoryOptions = document.querySelector('.category-options');
+
+    categoryBtn.addEventListener("click", function () {
+        categoryOptions.style.display = (categoryOptions.style.display === "none" || categoryOptions.style.display === "") ? "block" : "none";
+    });
+});
+
 
 });
 
@@ -105,7 +217,20 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             difficultyBtn.style.display = 'none';
             difficultyOptions.style.display = 'none'
-
+        }
+        if (dishBtn.style.display === 'none') {
+            dishBtn.style.display = 'block';
+            dishOptions.style.display = 'none'
+        } else {
+            dishBtn.style.display = 'none';
+            dishOptions.style.display = 'none'
+        }
+        if (categoryBtn.style.display === 'none') {
+            categoryBtn.style.display = 'block';
+            categoryOptions.style.display = 'none'
+        } else {
+            categoryBtn.style.display = 'none';
+            categoryOptions.style.display = 'none'
         }
     });
     function toggleMenu() {
@@ -260,3 +385,56 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+//                                                                                                                              Blank space arrange
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const recipes = document.querySelectorAll('.square-button');
+    const wrapper = document.querySelector('.wrapper');
+
+    window.addEventListener('resize', updateGrid); // Update grid on window resize
+
+    function updateGrid() {
+        const visibleRecipes = Array.from(recipes).filter(recipe => recipe.style.visibility !== "hidden");
+
+        visibleRecipes.forEach((recipe, index) => {
+            const row = Math.floor(index / 4) + 1;
+            const col = (index % 4) + 1;
+
+            recipe.style.gridRow = row;
+            recipe.style.gridColumn = col;
+        });
+
+        wrapper.style.gridTemplateRows = `repeat(${Math.ceil(visibleRecipes.length / 4)}, 500px)`;
+    }
+
+    function filterRecipes() {
+        recipes.forEach(function (recipe) {
+            const isVisible = recipe.style.visibility !== "hidden";
+            recipe.style.display = isVisible ? "block" : "none";
+        });
+
+        updateGrid();
+    }
+
+    // Attach the filterRecipes function to the change event of checkboxes
+    const checkboxes = document.querySelectorAll('.tolerance-options input[type="checkbox"]');
+    checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("change", filterRecipes);
+    });
+
+    const priceCheckboxes = document.querySelectorAll('.price-options input[type="checkbox"]');
+    priceCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("change", filterRecipes);
+    });
+
+    const difficultyCheckboxes = document.querySelectorAll('.difficulty-options input[type="checkbox"]');
+    difficultyCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("change", filterRecipes);
+    });
+
+    // Initial update of the grid on page load
+    updateGrid();
+});
+
