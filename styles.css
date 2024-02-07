@@ -5,6 +5,10 @@ body {
     overflow-y: scroll;
     height: 100vh; /* Výška na 100% obrazovky */
 }
+a
+{
+    text-decoration: none;
+}
 header {
     background-color: transparent; /* Průhledné pozadí */
     color: rgba(255, 255, 255, 0);
@@ -12,8 +16,9 @@ header {
     position: fixed;
     display: flex;
 }
+
 main {
-    background-image: url('background.png');
+    background-image: url('background.jpg');
     background-size: cover;
     background-position: center bottom; /* Ofset pro spodní část pozadí */
     background-attachment: scroll; /* Obrázek se bude pohybovat při scrollování */
@@ -26,6 +31,19 @@ main {
 
     padding-top: 80px; /* Adjust the top padding to leave space for the fixed header */
 }
+
+
+#smartcook{
+    color: #ffffff;
+    -webkit-text-stroke: 6px #585858;
+    margin-top: 0%;
+    font-size: 110px;
+    display: flex;
+    text-align: center;
+    margin: center;
+    justify-content: center;
+}
+
 .recipe-filter {
     display: flex;
     justify-content: space-between;
@@ -110,7 +128,6 @@ header {
     background-color: #e0e0e0;
     border: 6px solid #e0e0e0;
     border-radius: 5px;
-    
 
 }
 .square-button1 h1 {
@@ -195,7 +212,7 @@ header {
 
 .wrapper {
     margin-left: 3.5%; /* Adjust the left margin to offset the grid horizontally */
-    margin-top: 40%; /* Adjust the top margin to offset the grid vertically */
+    margin-top: 6%; /* Adjust the top margin to offset the grid vertically */
     display: grid;
     grid-template-columns: repeat(4, 350px);
     grid-template-rows: repeat(3, 500px); /* Auto height to fit content */

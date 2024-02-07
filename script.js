@@ -197,6 +197,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const toggleButton = document.getElementById('toggleButton');  //                                                           Menu toggle
     toggleButton.addEventListener('click', function () {
+        toleranceBtn.style.backgroundColor = 'white'; 
+        difficultyBtn.style.backgroundColor = 'white';
+        dishBtn.style.backgroundColor = 'white';
+        priceBtn.style.backgroundColor = 'white';
+        categoryBtn.style.backgroundColor = 'white';
         if (toleranceBtn.style.display === 'none') {
             toleranceBtn.style.display = 'block';
             toleranceOptions.style.display = 'none'
@@ -386,6 +391,64 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const categoryCheckboxes = document.querySelectorAll('.category-options input[type="checkbox"]');
+    const recipes = document.querySelectorAll('.square-button');
+
+    categoryCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("change", filterRecipes);
+    });
+
+    function filterRecipes() {
+        const selectedCategoryOptions = Array.from(categoryCheckboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.name.toLowerCase());
+
+        recipes.forEach(function (recipe) {
+            const recipeCategoryOption = recipe.dataset.category;
+
+            if (typeof recipeCategoryOption === "string") {
+                const isVisible = selectedCategoryOptions.includes(recipeCategoryOption.toLowerCase());
+                recipe.style.visibility = isVisible ? "hidden" : "visible";
+            } else {
+                // Handle the case where dataset.category is not a string or undefined
+                console.error("Dataset category is not a string or undefined for the recipe element:", recipe);
+                recipe.style.visibility = "visible"; // Show the recipe if category is not a string or undefined
+            }
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const dishCheckboxes = document.querySelectorAll('.dish-options input[type="checkbox"]');
+    const recipes = document.querySelectorAll('.square-button');
+
+    dishCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("change", filterRecipes);
+    });
+
+    function filterRecipes() {
+        const selectedDishOptions = Array.from(dishCheckboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.name.toLowerCase());
+
+        recipes.forEach(function (recipe) {
+            const recipeDishOption = recipe.dataset.dish;
+
+            if (typeof recipeDishOption === "string") {
+                const isVisible = selectedDishOptions.includes(recipeDishOption.toLowerCase());
+                recipe.style.visibility = isVisible ? "hidden" : "visible";
+            } else {
+                // Handle the case where dataset.dish is not a string or undefined
+                console.error("Dataset dish is not a string or undefined for the recipe element:", recipe);
+                recipe.style.visibility = "visible"; // Show the recipe if dish is not a string or undefined
+            }
+        });
+    }
+});
+
+
+
 //                                                                                                                              Blank space arrange
 
 
@@ -434,7 +497,55 @@ document.addEventListener("DOMContentLoaded", function () {
         checkbox.addEventListener("change", filterRecipes);
     });
 
+    const dishCheckboxes = document.querySelectorAll('.dish-options input[type="checkbox"]');
+    dishCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("change", filterRecipes);
+    });
+
+    const categoryCheckboxes = document.querySelectorAll('.category-options input[type="checkbox"]');
+    categoryCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("change", filterRecipes);
+    });
+
     // Initial update of the grid on page load
     updateGrid();
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("searchInput");
+    const searchButton = document.getElementById("searchButton");
+    const recipes = document.querySelectorAll('.square-button');
+    const wrapper = document.querySelector('.wrapper');
+
+    window.addEventListener('resize', updateGrid); // Update grid on window resize
+    searchButton.addEventListener("click", filterRecipes);
+
+    function filterRecipes() {
+        const searchTerm = searchInput.value.toLowerCase();
+
+        recipes.forEach(function (recipe) {
+            const recipeTitle = recipe.dataset.title.toLowerCase();
+            const isVisible = recipeTitle.includes(searchTerm);
+            recipe.style.visibility = isVisible ? "visible" : "hidden";
+        });
+
+        updateGrid();
+    }
+
+    function updateGrid() {
+        const visibleRecipes = Array.from(recipes).filter(recipe => recipe.style.visibility !== "hidden");
+
+        visibleRecipes.forEach((recipe, index) => {
+            const row = Math.floor(index / 4) + 1;
+            const col = (index % 4) + 1;
+
+            recipe.style.gridRow = row;
+            recipe.style.gridColumn = col;
+        });
+
+        wrapper.style.gridTemplateRows = `repeat(${Math.ceil(visibleRecipes.length / 4)}, 500px)`;
+    }
+
+    // Initial update of the grid on page load
+    updateGrid();
+});
